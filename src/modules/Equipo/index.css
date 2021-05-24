@@ -1,0 +1,24 @@
+.itemsContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 30%;
+  margin: 3%;
+  border: 1px solid #282c34;
+  border-radius: 2%;
+}
+
+.card img {
+  border-radius: 2% 2% 0 0;
+  width: 100%;
+  height: auto;
+}
+
+.info {
+  padding: 3%;
+  text-align: left;
+}
