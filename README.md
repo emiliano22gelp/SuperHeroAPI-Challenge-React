@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+IMPORTANTE: (LEER ANTES DE PROBAR LA APLICACION)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Paso 1: Clonar el repositorio
 
-## Available Scripts
+# con http:
 
-In the project directory, you can run:
+git clone https://github.com/emiliano22gelp/SuperHeroAPI-Challenge-React.git
 
-### `npm start`
+# con ssh:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+git clone git@github.com:emiliano22gelp/SuperHeroAPI-Challenge-React.git
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Paso 2: Instalar Dependencias
 
-### `npm test`
+- cd "carpeta clonada"
+- npm install
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Paso 3: Ejecutar la app en modo desarrollo
 
-### `npm run build`
+- npm run start
+- Por defecto la app se levanta en el puerto 3000 [http://localhost:3000].
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Herramientas y Librerias utilizadas:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Boostrap (para diseño responsive).
+- Material UI (para la reutilizacion de componentes simples ya desarrollados, como por ejemplo, el componente TextField para simular un input de texto).
+- Formik (para la validacion de formularios).
+- Axios (para peticiones a la API de Superheroes).
+- Hooks de estado y de efecto, useState y useEffect (para utilizar durante la renderizacion de componentes).
+- localStorage (para almacenar datos que deben persistir mas alla del componente en el que son utilizados, por ejemplo informacion del equipo de superheroes y el token del usuario autenticado).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Algunas consideraciones importantes sobre la app desarrollada:
 
-### `npm run eject`
+- Al ingresar a la app se visualizara un formulario de autenticacion.
+  Ingresar email "challenge@alkemy.org" y password "react" para loguearse exitosamente.
+  Cualquier otro email o password que se intente ingresar retornara un error de autenticacion.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Al autenticarse la app redirige a la ruta que muestra el equipo de Superheroes (la primera vez que se ingresa estara vacio). Luego cada vez que se ingrese se mantendra el estado del equipo hasta el ultimo acceso.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Para buscar superheroes y agregarlos al equipo, pulsar la opcion "Buscar Superheroes", en la pantalla del equipo. Esto conducira a la ruta de buscar superheroes y se visualizara un formulario con un campo "Nombre" donde debe indicarse el nombre del superheroe a buscar. En caso de existir resultados que coincidan con la busqueda se mostraran los superheroes correspondientes con la opcion de agregarlos al equipo. Caso contrario, si no existen resultados, sera informado por la app.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Para agregar un superheroe al equipo pulsar la opcion "Agregar SuperHeroe al equipo" que aparecera en cada resultado de la busqueda.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Una vez agregado al equipo, podremos ver el detalle de ese superheroe o eliminarlo del equipo. Para ver el detalle del mismo pulsar sobre la opcion "Detalle" que figura en la pantalla del equipo por debajo de cada superheroe perteneciente al equipo. Para eliminarlo del equipo pulsar la opcion "Eliminar" justo al lado de la opcion "Detalle".
 
-## Learn More
+- En el equipo ademas de mostrarse los superheroes agregados, tambien se mostrara informacion sobre el peso y altura promedio del equipo. Ademas se mostrara el acumulativo de powerstats ordenados del powerstat de mayor acumulativo al menor. Estos datos adicionales se actualizan cada vez que se agrega o elimina un superheroe del equipo.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Para cerrar sesion pulsar sobre los 3 puntos "⁝" que aparecen en la parte superior derecha. Esto desplegara la opcion "Cerrar Sesion". Pulsar sobre la misma y la sesion quedara inactiva redirigiendo nuevamente al formulario de autenticacion.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Validaciones
 
-### Code Splitting
+- Si no me logueo e intento acceder a la ruta del equipo, la que muestra el detalle de un superheroe o a la que me permite buscar superheroes; la app redirige instantaneamente a la ruta del login. De igual manera si ya estoy autenticado e intento acceder al formulario del login la app redirige a la ruta del equipo.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Si en la ruta del detalle intento enviar por GET el id de un superheroe que no pertenece al equipo, la app informa dicha situacion. Esto quiere decir que unicamente se podra visualizar el detalle de aquellos superheroes que PERTENEZCAN AL EQUIPO.
 
-### Analyzing the Bundle Size
+- Una vez que agrego un superheroe al equipo, se podra buscarlo nuevamente en el formulario de busqueda
+  pero ya no estara disponible la opcion de agregarlo al equipo (esto es porque ya pertenece al equipo).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Una vez que el equipo supera los 6 miembros, se podra seguir buscando superheroes en el formulario de busqueda pero ya no sera posible agregar ningun superheroe mas al equipo. La app informara que se supero el tope maximo. La unica manera de volver a agregar un superheroe al equipo es eliminando a alguno del mismo.
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Si ingreso a cualquier ruta no existente, la app mostrara un mensaje 404 Not Found
