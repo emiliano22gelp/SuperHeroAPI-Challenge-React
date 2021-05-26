@@ -1,12 +1,12 @@
-IMPORTANTE: (LEER ANTES DE PROBAR LA APLICACION)
+# IMPORTANTE: (LEER ANTES DE PROBAR LA APLICACION)
 
 ## Paso 1: Clonar el repositorio
 
-# con http:
+## con http:
 
 git clone https://github.com/emiliano22gelp/SuperHeroAPI-Challenge-React.git
 
-# con ssh:
+## con ssh:
 
 git clone git@github.com:emiliano22gelp/SuperHeroAPI-Challenge-React.git
 
